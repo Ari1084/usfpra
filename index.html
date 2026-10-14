@@ -353,6 +353,10 @@ section.slide,.hero{position:relative;overflow:hidden}
 .sahur.r:not(.top).talk .bub{transform:translate(0,-10px) scale(1)}
 .sahur.top .bub{left:auto;right:0;transform:translate(0,-6px) scale(.6) rotate(180deg)}
 .sahur.top.talk .bub{transform:translate(0,-10px) scale(1) rotate(180deg)}
+.sahur .f1,.sahur .f2,.sahur .f3{display:none}
+.sahur[data-face="1"] .f0,.sahur[data-face="2"] .f0,.sahur[data-face="3"] .f0{display:none}
+.sahur[data-face="1"] .f1,.sahur[data-face="2"] .f2,.sahur[data-face="3"] .f3{display:inline}
+.sahur .bub{font-size:.95rem;padding:8px 12px}
 body.no-sahur .sahur{display:none}
 @media (max-width:640px){.sahur{width:54px;height:81px}.sahur.m{display:none}}
 @media (prefers-reduced-motion:reduce){.sahur.pop svg{animation:none}}
@@ -887,27 +891,72 @@ body.no-sahur .sahur{display:none}
       <line x1="22" y1="76" x2="13" y2="86" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
       <rect x="64" y="14" width="9" height="56" rx="4.5" fill="#8B5A2B" stroke="#5C3A1A" stroke-width="1.5" transform="rotate(14 68 64)"/>
       ${v.under || ''}
-      <circle cx="33" cy="51" r="6.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="47" cy="51" r="6.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/>
-      <circle cx="34.5" cy="52" r="2.8" fill="#111"/><circle cx="48.5" cy="52" r="2.8" fill="#111"/>
-      <path d="M27 42l10 3M53 42l-10 3" stroke="#3A2410" stroke-width="2" stroke-linecap="round"/>
-      <path d="M33 68q7 6 14 0" stroke="#3A2410" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <g class="f0">
+        <circle cx="33" cy="51" r="6.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="47" cy="51" r="6.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/>
+        <circle cx="34.5" cy="52" r="2.8" fill="#111"/><circle cx="48.5" cy="52" r="2.8" fill="#111"/>
+        <path d="M27 42l10 3M53 42l-10 3" stroke="#3A2410" stroke-width="2" stroke-linecap="round"/>
+        <path d="M33 68q7 6 14 0" stroke="#3A2410" stroke-width="2" fill="none" stroke-linecap="round"/></g>
+      <g class="f1">
+        <circle cx="32" cy="50" r="9" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="48" cy="50" r="9" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/>
+        <circle cx="32" cy="50" r="1.8" fill="#111"/><circle cx="48" cy="50" r="1.8" fill="#111"/>
+        <path d="M24 36l11 5M56 36l-11 5" stroke="#3A2410" stroke-width="2.6" stroke-linecap="round"/>
+        <ellipse cx="40" cy="70" rx="7" ry="8" fill="#3B0D0D" stroke="#1F1F1F" stroke-width="1.5"/><ellipse cx="40" cy="74" rx="4" ry="3" fill="#E35D6A"/></g>
+      <g class="f2">
+        <path d="M26.5 51a6.5 6.5 0 0 0 13 0z" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><path d="M40.5 51a6.5 6.5 0 0 0 13 0z" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/>
+        <circle cx="33" cy="53" r="2.4" fill="#111"/><circle cx="47" cy="53" r="2.4" fill="#111"/>
+        <path d="M25 40l13 8M55 40l-13 8" stroke="#3A2410" stroke-width="3" stroke-linecap="round"/>
+        <rect x="30" y="64" width="20" height="8" rx="2" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><path d="M35 64v8M40 64v8M45 64v8M30 68h20" stroke="#1F1F1F" stroke-width="1"/></g>
+      <g class="f3">
+        <circle cx="32" cy="50" r="9.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="48" cy="52" r="4.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/>
+        <circle cx="29" cy="46" r="3.5" fill="#111"/><circle cx="49.5" cy="54" r="1.8" fill="#111"/>
+        <path d="M24 37q8-6 14 2M44 44q6-3 11 1" stroke="#3A2410" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M31 66q9 8 18-1" stroke="#3A2410" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M41 68q1 9 6 8q4-1 1-9" fill="#E35D6A" stroke="#1F1F1F" stroke-width="1"/></g>
       ${v.over || ''}</svg>`;
   }
   const spots = [['top','classic','r'],['who','plumber','l'],['status','monkey','r top'],['why','astronaut','r'],['asks','chef','l'],
                  ['funding','investor','r'],['campus','graduate','m'],['action','ninja','l'],['join','pirate','r'],['faq','wizard','l']];
-  const lines = ['TUNG TUNG TUNG SAHUR!', 'tung tung tung… SAHUR', 'TUNG TUNG TUNG!', 'sahur says: vote before war'];
-  let actx;
-  function knock() {
-    try {
-      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
-      [0, .22, .44].forEach(t => {
-        const o = actx.createOscillator(), g = actx.createGain(), at = actx.currentTime + t;
-        o.type = 'triangle'; o.frequency.setValueAtTime(520, at); o.frequency.exponentialRampToValueAtTime(180, at + .12);
-        g.gain.setValueAtTime(.5, at); g.gain.exponentialRampToValueAtTime(.001, at + .16);
-        o.connect(g).connect(actx.destination); o.start(at); o.stop(at + .18);
-      });
-      if ('speechSynthesis' in window) setTimeout(() => { const u = new SpeechSynthesisUtterance('sahur'); u.rate = .9; u.pitch = .6; speechSynthesis.speak(u); }, 700);
-    } catch (_) {}
+  let actx, voice;
+  const unlock = () => {
+    try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); } catch (_) {}
+  };
+  addEventListener('pointerdown', unlock, { passive: true });
+  addEventListener('keydown', unlock);
+  function pickVoice() {
+    if (!('speechSynthesis' in window)) return null;
+    const vs = speechSynthesis.getVoices().filter(v => /^en/i.test(v.lang));
+    return vs.find(v => /daniel|fred|alex|google uk english male|male/i.test(v.name)) || vs[0] || null;
+  }
+  if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => { voice = pickVoice(); };
+  function knockAt(t) {
+    if (!actx || actx.state !== 'running') return;
+    const at = actx.currentTime + t;
+    // woody "tung": a pitched body tone + a short click
+    [[300, 120, .55, .22, 'sine'], [900, 400, .25, .05, 'triangle']].forEach(([f0, f1, vol, dur, type]) => {
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = type; o.frequency.setValueAtTime(f0, at); o.frequency.exponentialRampToValueAtTime(f1, at + dur);
+      g.gain.setValueAtTime(vol, at); g.gain.exponentialRampToValueAtTime(.001, at + dur);
+      o.connect(g).connect(actx.destination); o.start(at); o.stop(at + dur + .02);
+    });
+  }
+  function say() {
+    if (!('speechSynthesis' in window) || !navigator.userActivation?.hasBeenActive) return;
+    speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance('Tung. Tung. Tung. Sahur!');
+    voice = voice || pickVoice(); if (voice) u.voice = voice;
+    u.rate = 1.05; u.pitch = .45; u.volume = 1;
+    speechSynthesis.speak(u);
+  }
+  // pop out, pull a random face, spell out the chant with knocks + voice
+  function sahurPop(b) {
+    if (b._busy || document.body.classList.contains('no-sahur')) return;
+    b._busy = true;
+    const bub = b.querySelector('.bub');
+    b.dataset.face = 1 + Math.floor(Math.random() * 3);
+    b.classList.add('pop', 'talk');
+    const words = ['TUNG', 'TUNG TUNG', 'TUNG TUNG TUNG', 'TUNG TUNG TUNG SAHUR!'];
+    words.forEach((w, i) => setTimeout(() => { bub.textContent = w; if (i < 3) knockAt(0); }, i * 380));
+    say();
+    setTimeout(() => { b.classList.remove('pop', 'talk'); delete b.dataset.face; b._busy = false; }, 3200);
   }
   const sahurs = spots.map(([id, kind, pos]) => {
     const sec = document.getElementById(id); if (!sec) return null;
@@ -915,24 +964,19 @@ body.no-sahur .sahur{display:none}
     b.type = 'button'; b.className = 'sahur ' + pos; b.title = 'Tung Tung Tung Sahur (' + kind + ')';
     b.setAttribute('aria-label', 'Tung Tung Tung Sahur easter egg: ' + kind);
     b.innerHTML = sahurSVG(kind) + '<span class="bub"></span>';
-    b.addEventListener('click', e => {
-      e.stopPropagation();
-      b.querySelector('.bub').textContent = lines[Math.floor(Math.random() * lines.length)];
-      b.classList.add('pop', 'talk'); knock();
-      clearTimeout(b._t); b._t = setTimeout(() => b.classList.remove('pop', 'talk'), 2200);
-    });
+    b.addEventListener('click', e => { e.stopPropagation(); unlock(); sahurPop(b); });
     sec.appendChild(b); return b;
   }).filter(Boolean);
-  // every now and then, a random visible one pops up for a look
+  // every now and then, a random one that's on screen pops out on its own
   (function peek() {
     setTimeout(() => {
-      if (!document.body.classList.contains('no-sahur')) {
-        const vis = sahurs.filter(b => { const r = b.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0; });
+      if (!document.hidden) {
+        const vis = sahurs.filter(b => { const r = b.getBoundingClientRect(); return r.top < innerHeight && r.bottom > 0 && r.width; });
         const b = vis[Math.floor(Math.random() * vis.length)];
-        if (b && !b.classList.contains('talk')) { b.classList.add('pop'); setTimeout(() => b.classList.remove('pop'), 1700); }
+        if (b) sahurPop(b);
       }
       peek();
-    }, 9000 + Math.random() * 9000);
+    }, 10000 + Math.random() * 10000);
   })();
   try { if (localStorage.getItem('noSahur') === '1') document.body.classList.add('no-sahur'); } catch (_) {}
 
@@ -1022,7 +1066,7 @@ body.no-sahur .sahur{display:none}
     const on = document.body.classList.contains('present');
     if (e.key === 'p' || e.key === 'P') { on ? exit() : enter(); return; }
     if (e.key === '?') { keys.classList.toggle('show'); return; }
-    if (e.key === 's' || e.key === 'S') { const off = document.body.classList.toggle('no-sahur'); try { localStorage.setItem('noSahur', off ? '1' : '0'); } catch (_) {} return; }
+    if (e.key === 's' || e.key === 'S') { const off = document.body.classList.toggle('no-sahur'); if (off && 'speechSynthesis' in window) speechSynthesis.cancel(); try { localStorage.setItem('noSahur', off ? '1' : '0'); } catch (_) {} return; }
     if (!on) return;
     if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); next(); }
     else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
