@@ -1,934 +1,169 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<script>document.documentElement.classList.add('js')</script>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tung Tung Tung Sahur — The Official Fan Club</title>
-<meta name="description" content="Everything Tung Tung Tung Sahur: the lore, the costumes, the soundboard, build your own Tung, and the official fan club. (Also: Tung supports USFPRA.)">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='18' y='6' width='28' height='54' rx='13' fill='%23C99A62' stroke='%236B4423' stroke-width='3'/%3E%3Ccircle cx='26' cy='24' r='5' fill='%23fff'/%3E%3Ccircle cx='38' cy='24' r='5' fill='%23fff'/%3E%3Ccircle cx='27' cy='25' r='2' fill='%23000'/%3E%3Ccircle cx='39' cy='25' r='2' fill='%23000'/%3E%3C/svg%3E">
+<title>USFPRA | United States Foreign Policy Restriction Association</title>
+<meta name="description" content="USFPRA is a student-led interest group calling for congressional oversight, diplomacy, and transparency in U.S. foreign policy. Putting National Interest Before Intervention.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-:root{
-  --night:#17123A;        /* pre-dawn sky */
-  --night-2:#241C55;
-  --night-3:#31286E;
-  --wood:#C99A62;
-  --wood-d:#6B4423;
-  --cream:#FBF4E6;
-  --cream-2:#F3E7CF;
-  --card:#FFFFFF;
-  --ink:#1E1A2E;
-  --muted:#5E5872;
-  --rule:#E3D6BB;
-  --sun:#FF8A3D;          /* sunrise accent */
-  --sun-d:#C2531A;
-  --gold:#FFD166;
-  --focus:#2F6BFF;
-  --disp:"Bungee", "Impact", sans-serif;
-  --head:"Bricolage Grotesque", system-ui, sans-serif;
-  --sans:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --max:1160px;
-  --r:18px;
-  --shadow:0 2px 0 rgba(107,68,35,.15),0 12px 30px rgba(30,26,46,.08);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:72px}
-body{margin:0;background:var(--cream);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
-svg{display:block;max-width:100%}
-a{color:var(--sun-d);text-underline-offset:3px}
-:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
-.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;z-index:100}
-.skip:focus{left:8px}
-.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-h1,h2,h3{margin:0;font-family:var(--head);font-weight:800;line-height:1.05;letter-spacing:-.015em}
-h2{font-size:clamp(2.1rem,4.6vw,3.4rem)}
-h3{font-size:1.3rem;line-height:1.2}
-p{margin:0 0 1em}
-.eyebrow{font:400 .85rem/1 var(--disp);letter-spacing:.08em;color:var(--sun-d);margin-bottom:16px;display:inline-flex;align-items:center;gap:10px}
-.eyebrow::before{content:"";width:22px;height:4px;border-radius:2px;background:currentColor}
-.lede{font-size:1.15rem;color:var(--muted);max-width:62ch}
-.muted{color:var(--muted)}
-.small{font-size:.9rem}
-
-/* nav */
-.nav{position:sticky;top:0;z-index:50;background:rgba(23,18,58,.94);backdrop-filter:blur(10px);color:#fff}
-.nav .wrap{display:flex;align-items:center;gap:16px;height:64px}
-.brand{display:flex;align-items:center;gap:10px;color:#fff;text-decoration:none;font:400 1.05rem/1 var(--disp);letter-spacing:.03em}
-.brand .mini{width:26px;height:40px}
-.nav ul{display:flex;gap:2px;list-style:none;margin:0 0 0 auto;padding:0}
-.nav ul a{display:block;white-space:nowrap;padding:10px 11px;border-radius:10px;color:#D9D3FF;text-decoration:none;font-weight:600;font-size:.92rem;transition:background .2s,color .2s}
-.nav ul a:hover{background:var(--night-3);color:#fff}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;border:0;background:var(--sun);color:#2A1300;font:800 1rem/1 var(--sans);text-decoration:none;cursor:pointer;box-shadow:0 4px 0 var(--sun-d);transition:transform .12s,box-shadow .12s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 var(--sun-d)}
-.btn:active{transform:translateY(2px);box-shadow:0 1px 0 var(--sun-d)}
-.btn.ghost{background:transparent;color:inherit;box-shadow:inset 0 0 0 2px currentColor}
-.btn.ghost:hover{background:rgba(255,255,255,.08)}
-.btn.wood{background:var(--wood);color:#2A1300;box-shadow:0 4px 0 var(--wood-d)}
-.btn svg{width:18px;height:18px}
-.nav .btn{min-height:40px;padding:0 16px;font-size:.88rem}
-.menu-btn{display:none;background:none;border:0;width:44px;height:44px;border-radius:8px;cursor:pointer;color:#fff}
-@media (max-width:1120px){
-  .nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--night);padding:8px 16px 16px}
-  .nav ul.open{display:flex}
-  .menu-btn{display:inline-flex;align-items:center;justify-content:center}
-  .nav .btn.present-btn{margin-left:auto}
-}
-
-/* sections */
-section.slide{padding:100px 0;position:relative;overflow:hidden}
-section.night{background:var(--night);color:#F1EEFF}
-section.night .lede,section.night .muted{color:#BDB6E8}
-section.night .eyebrow{color:var(--gold)}
-section.paper{background:var(--card)}
-.head{max-width:800px;margin-bottom:48px}
-.head h2{margin-bottom:14px}
-
-/* stars + moon for night sections */
-.sky{position:absolute;inset:0;pointer-events:none;overflow:hidden}
-.sky i{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;opacity:.7;animation:tw 3s ease-in-out infinite}
-@keyframes tw{50%{opacity:.15}}
-.moon{position:absolute;top:60px;right:8%;width:90px;height:90px;border-radius:50%;box-shadow:18px -8px 0 0 var(--gold);transform:rotate(-20deg);opacity:.9}
-
-/* hero */
-.hero{padding:70px 0 0;min-height:calc(100vh - 64px);display:flex;align-items:center}
-.hero .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:end;width:100%}
-.chant{font:400 clamp(3.2rem,9vw,7.4rem)/.88 var(--disp);margin:0 0 22px;letter-spacing:.01em}
-.chant span{display:inline-block;color:#4A4380;transition:color .12s,transform .12s}
-.chant span.lit{color:var(--gold);transform:translateY(-6px) rotate(-3deg)}
-.chant .sah{color:var(--sun)}
-.chant .sah.lit{color:#fff;text-shadow:0 0 30px var(--sun)}
-.hero .lede{font-size:1.25rem;margin-bottom:30px;color:#D9D3FF}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.presenters{margin:28px 0 60px;font-size:.95rem;color:#A9A2D6}
-.stage{position:relative;height:min(64vh,560px);display:flex;align-items:flex-end;justify-content:center}
-.stage .glow{position:absolute;bottom:-40px;left:50%;width:520px;height:220px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(255,138,61,.55),transparent);filter:blur(4px)}
-.big-tung{position:relative;height:100%;aspect-ratio:2/3;cursor:pointer;background:none;border:0;padding:0;transition:transform .2s}
-.big-tung:hover{transform:rotate(-2deg) scale(1.02)}
-.big-tung svg{width:100%;height:100%;overflow:visible}
-.big-tung.go svg{animation:bonk .28s ease-in-out infinite}
-@keyframes bonk{0%,100%{transform:rotate(0)}50%{transform:rotate(-6deg) translateY(-6px)}}
-.counter{position:absolute;top:10px;left:0;background:var(--card);color:var(--ink);border-radius:14px;padding:10px 14px;font-weight:700;font-size:.9rem;box-shadow:var(--shadow)}
-.counter b{font:400 1.4rem/1 var(--disp);color:var(--sun-d);display:block}
-
-/* lore */
-.lore{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{background:var(--card);border-radius:var(--r);padding:26px;box-shadow:var(--shadow);border:2px solid var(--rule)}
-.card h3{margin-bottom:10px}
-.card p:last-child{margin-bottom:0}
-.num{font:400 2.6rem/1 var(--disp);color:var(--sun);margin-bottom:12px}
-.facts-row{margin-top:26px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.fact{background:var(--cream-2);border-radius:14px;padding:16px 18px}
-.fact b{display:block;font:400 1.6rem/1.1 var(--disp);color:var(--wood-d)}
-.fact span{font-size:.9rem;color:var(--muted)}
-.cast{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-.cast span{background:var(--cream-2);border:2px solid var(--rule);border-radius:999px;padding:6px 12px;font-size:.88rem;font-weight:600}
-
-/* collection */
-.coll{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
-.tcard{position:relative;background:var(--night-2);border:2px solid var(--night-3);border-radius:var(--r);padding:16px 14px 16px;text-align:center;color:#fff;cursor:pointer;font:inherit;transition:transform .15s,border-color .15s}
-.tcard:hover{transform:translateY(-4px);border-color:var(--gold)}
-.tcard .art{height:150px;display:flex;justify-content:center;margin:14px 0 10px;position:relative}
-.tcard .art svg{height:100%;width:auto;overflow:visible}
-.tcard.go .art svg{animation:bonk .28s ease-in-out infinite}
-.tcard h3{font-size:1.02rem;margin-bottom:4px}
-.tcard p{font-size:.8rem;color:#BDB6E8;margin:0;line-height:1.4}
-.tcard .rar{position:absolute;top:10px;left:10px;font:400 .62rem/1 var(--disp);letter-spacing:.06em;padding:5px 7px;border-radius:6px}
-.rar.c{background:#3D3570;color:#D9D3FF}.rar.r{background:#2563EB;color:#fff}.rar.e{background:#9333EA;color:#fff}.rar.l{background:var(--gold);color:#3A2400}
-
-/* bubble (shared) */
-.bub{position:absolute;bottom:100%;left:50%;transform:translate(-50%,-4px) scale(.6);opacity:0;pointer-events:none;white-space:nowrap;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:14px;padding:8px 12px;font:400 .85rem/1.1 var(--disp);letter-spacing:.03em;transition:all .18s;z-index:3}
-.talk > .bub,.talk .art > .bub{opacity:1;transform:translate(-50%,-10px) scale(1)}
-
-/* soundboard */
-.board{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.pad{min-height:120px;border-radius:var(--r);border:0;cursor:pointer;font:400 1.3rem/1.1 var(--disp);color:#2A1300;background:var(--wood);box-shadow:0 6px 0 var(--wood-d);transition:transform .08s,box-shadow .08s;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px}
-.pad small{font:600 .82rem/1.2 var(--sans);opacity:.75}
-.pad:active,.pad.hit{transform:translateY(5px);box-shadow:0 1px 0 var(--wood-d)}
-.pad.s{background:var(--sun);box-shadow:0 6px 0 var(--sun-d)}
-.pad.g{background:var(--gold);box-shadow:0 6px 0 #B98A1B}
-.tempo{display:flex;align-items:center;gap:14px;margin-top:22px;flex-wrap:wrap}
-.tempo input{accent-color:var(--sun);width:220px}
-
-/* rankings */
-.rank{display:grid;gap:14px}
-.rrow{display:grid;grid-template-columns:200px 1fr 60px;gap:16px;align-items:center;background:var(--card);border-radius:14px;padding:14px 18px;box-shadow:var(--shadow)}
-.rrow.me{outline:3px solid var(--sun)}
-.rrow .nm{font-weight:800}
-.rrow .nm small{display:block;font-weight:500;color:var(--muted);font-size:.8rem}
-.track{height:14px;border-radius:999px;background:var(--cream-2);overflow:hidden}
-.fill{height:100%;width:0;border-radius:999px;background:var(--wood);transition:width 1.1s cubic-bezier(.2,.7,.2,1)}
-.me .fill{background:linear-gradient(90deg,var(--sun),var(--gold))}
-.rrow .sc{font:400 1.2rem/1 var(--disp);text-align:right}
-.disc{margin-top:14px;font-size:.85rem;color:var(--muted)}
-
-/* builder */
-.builder{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
-.preview{background:var(--night);border-radius:24px;height:440px;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden;padding-top:40px}
-.preview .art{height:360px;position:relative;cursor:pointer}
-.preview .art svg{height:100%;width:auto;overflow:visible}
-.preview .art.go svg{animation:bonk .28s ease-in-out infinite}
-.preview .tag{position:absolute;top:18px;left:18px;right:18px;text-align:center;font:400 1.3rem/1.15 var(--disp);color:var(--gold)}
-.opts-group{margin-bottom:20px}
-.opts-group > b{display:block;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{min-height:44px;padding:0 14px;border-radius:999px;border:2px solid var(--rule);background:var(--card);font:600 .92rem var(--sans);color:var(--ink);cursor:pointer;transition:border-color .15s,background .15s}
-.chip[aria-pressed="true"]{border-color:var(--ink);background:var(--ink);color:#fff}
-.sw{width:44px;height:44px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 2px var(--rule);cursor:pointer}
-.sw[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
-
-/* quiz */
-.qwrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.quiz{background:var(--card);border-radius:var(--r);padding:30px;box-shadow:var(--shadow);border:2px solid var(--rule)}
-.prog{display:flex;gap:6px;margin-bottom:20px}
-.prog i{flex:1;height:6px;border-radius:999px;background:var(--cream-2)}
-.prog i.on{background:var(--sun)}
-.q{font:800 1.4rem/1.3 var(--head);margin-bottom:18px}
-.opts{display:grid;gap:10px}
-.opt{text-align:left;min-height:52px;padding:12px 16px;border-radius:12px;border:2px solid var(--rule);background:var(--cream);font:600 1rem/1.35 var(--sans);color:var(--ink);cursor:pointer}
-.opt:hover:not(:disabled){border-color:var(--ink)}
-.opt.right{border-color:#3F7D20;background:#E3F2D6}
-.opt.wrong{border-color:#B42318;background:#FDE4E1}
-.opt:disabled{cursor:default}
-.explain{margin-top:16px;padding:14px 16px;border-radius:12px;background:var(--cream);display:none}
-.explain.show{display:block}
-.qfoot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:12px}
-.quiz-tung{display:flex;justify-content:center;align-items:flex-end;height:360px;position:relative}
-.quiz-tung .art{height:300px;position:relative}
-.quiz-tung .art svg{height:100%;width:auto;overflow:visible}
-
-/* fan club */
-.club{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
-.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0 26px}
-.tier{border:2px solid var(--night-3);border-radius:14px;padding:16px;background:var(--night-2);color:#fff;text-align:left;cursor:pointer;font:inherit;transition:border-color .15s,transform .15s}
-.tier:hover{border-color:var(--gold);transform:translateY(-2px)}
-.tier .p{font:400 1.7rem/1 var(--disp);color:var(--gold)}
-.tier .nm{font-weight:800;margin:6px 0 4px}
-.tier .d{font-size:.84rem;color:#BDB6E8}
-.events{display:grid;gap:10px}
-.events div{display:grid;grid-template-columns:90px 1fr;gap:12px;align-items:center;background:var(--night-2);border-radius:12px;padding:12px 14px}
-.events b{font:400 .8rem/1.2 var(--disp);color:var(--gold)}
-.form-card{background:var(--card);color:var(--ink);border-radius:var(--r);padding:28px}
-form .field{display:grid;gap:6px;margin-bottom:14px}
-label,legend{font-weight:700;font-size:.95rem}
-input[type=text],input[type=email],select{min-height:48px;padding:10px 14px;border-radius:12px;border:2px solid var(--rule);background:#fff;font:inherit;color:var(--ink)}
-input:focus,select:focus{border-color:var(--ink);outline:none;box-shadow:0 0 0 4px rgba(47,107,255,.18)}
-.checks{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.checks label{display:flex;gap:10px;align-items:center;font-weight:500;min-height:44px;padding:8px 12px;border:2px solid var(--rule);border-radius:12px;cursor:pointer}
-.checks input{width:18px;height:18px;accent-color:var(--sun)}
-.help{font-size:.85rem;color:var(--muted)}
-.err{color:#B42318;font-size:.88rem;min-height:1.2em}
-.ok{display:none;padding:18px;border-radius:12px;background:#E3F2D6;color:#21410F;font-weight:600}
-.ok.show{display:block}
-
-/* sidenote */
-.sidenote{display:grid;grid-template-columns:150px 1fr;gap:30px;align-items:center;max-width:860px;margin:0 auto;background:var(--card);border:2px dashed var(--wood);border-radius:var(--r);padding:28px 30px}
-.sidenote .art{height:190px;display:flex;justify-content:center}
-.sidenote .art svg{height:100%;width:auto}
-.sidenote h3{font-size:1.5rem;margin-bottom:8px}
-.sidenote .tagline{font-size:.78rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.outro{text-align:center;margin-top:60px}
-.outro .chant{font-size:clamp(2.2rem,6vw,4.6rem)}
-
-footer{background:var(--night);color:#A9A2D6;padding:36px 0;font-size:.88rem}
-footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-footer a{color:var(--gold)}
-
-/* reveal */
-.js .rv{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
-.js .rv.in{opacity:1;transform:none}
-
-/* tung faces (shared by every Tung on the page) */
-.tung .f1,.tung .f2,.tung .f3{display:none}
-[data-face="1"] .tung .f0,[data-face="2"] .tung .f0,[data-face="3"] .tung .f0{display:none}
-[data-face="1"] .tung .f1,[data-face="2"] .tung .f2,[data-face="3"] .tung .f3{display:inline}
-
-/* edge-peeking Tungs */
-.sahur{position:absolute;bottom:0;width:74px;height:111px;padding:0;border:0;background:none;cursor:pointer;z-index:6;transform:translateY(58%);transition:transform .45s cubic-bezier(.3,1.6,.5,1)}
-.sahur svg{width:100%;height:100%;overflow:visible}
-.sahur.l{left:22px}.sahur.r{right:22px}.sahur.m{left:46%}
-.sahur:hover,.sahur:focus-visible,.sahur.pop{transform:translateY(6%) rotate(-4deg)}
-.sahur.top{top:0;bottom:auto;transform:rotate(180deg) translateY(58%)}
-.sahur.top:hover,.sahur.top:focus-visible,.sahur.top.pop{transform:rotate(180deg) translateY(4%)}
-.sahur.pop svg{animation:wob .5s ease-in-out 3}
-@keyframes wob{0%,100%{transform:rotate(0)}25%{transform:rotate(-7deg)}75%{transform:rotate(7deg)}}
-.sahur.l .bub{left:0;transform:translate(0,-4px) scale(.6);transform-origin:left bottom}
-.sahur.l.talk .bub{transform:translate(0,-10px) scale(1)}
-.sahur.r:not(.top) .bub{left:auto;right:0;transform:translate(0,-4px) scale(.6);transform-origin:right bottom}
-.sahur.r:not(.top).talk .bub{transform:translate(0,-10px) scale(1)}
-.sahur.top .bub{left:auto;right:0;transform:translate(0,-4px) scale(.6) rotate(180deg)}
-.sahur.top.talk .bub{transform:translate(0,-10px) scale(1) rotate(180deg)}
-body.no-sahur .sahur{display:none}
-
-@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
-
-/* responsive */
-@media (max-width:980px){
-  .hero .grid,.builder,.qwrap,.club{grid-template-columns:1fr}
-  .lore,.board{grid-template-columns:1fr 1fr}
-  .coll{grid-template-columns:repeat(3,1fr)}
-  .facts-row{grid-template-columns:1fr 1fr}
-  .stage{height:420px}
-}
-@media (max-width:640px){
-  body{font-size:16px}
-  .wrap{padding:0 16px}
-  section.slide{padding:72px 0}
-  .lore,.board,.tiers,.checks{grid-template-columns:1fr}
-  .coll{grid-template-columns:1fr 1fr}
-  .rrow{grid-template-columns:1fr 50px}
-  .rrow .track{grid-column:1/-1;grid-row:2}
-  .sidenote{grid-template-columns:1fr;text-align:center}
-  .sahur{width:54px;height:81px}.sahur.m{display:none}
-  .stage{height:340px}
-}
-
-/* ---------- PRESENT MODE ---------- */
-.hud{display:none}
-body.present .nav,body.present footer{display:none}
-body.present{font-size:19px}
-body.present section.slide{min-height:100vh;display:flex;align-items:center;padding:32px 0 84px}
-body.present section.slide > .wrap{width:100%;max-width:1320px}
-body.present .hero{padding-top:20px}
-body.present .presenters{margin-bottom:20px}
-body.present .rv{opacity:1!important;transform:none!important}
-body.present section.enter > .wrap{animation:slideIn .45s cubic-bezier(.2,.7,.2,1)}
-@keyframes slideIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-body.present .hud{display:flex;position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:90;align-items:center;gap:6px;background:rgba(23,18,58,.95);color:#fff;border-radius:999px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.3);font-size:.9rem;transition:opacity .3s}
-body.present.idle .hud{opacity:.15}
-.hud button{width:40px;height:40px;border-radius:50%;border:0;background:transparent;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.hud button:hover{background:rgba(255,255,255,.12)}
-.hud button svg{width:18px;height:18px}
-.hud .who{padding:0 12px;display:flex;align-items:center;gap:10px;white-space:nowrap}
-.hud .who b{color:var(--gold)}
-.hud .clock{font-variant-numeric:tabular-nums;padding:6px 12px;border-radius:999px;background:rgba(255,255,255,.1)}
-.hud .clock.over{background:#B42318}
-.hud .dots{display:flex;gap:5px;padding:0 8px}
-.hud .dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3)}
-.hud .dots i.on{background:var(--gold)}
-.hud .more{display:none;padding:0 10px;color:var(--gold);font-weight:700;white-space:nowrap}
-body.present.has-more .hud .more{display:inline}
-.keys{position:fixed;inset:0;z-index:120;background:rgba(23,18,58,.6);display:none;align-items:center;justify-content:center}
-.keys.show{display:flex}
-.keys .box{background:#fff;color:var(--ink);border-radius:16px;padding:28px 32px;max-width:460px;width:90%}
-.keys kbd{display:inline-block;min-width:30px;text-align:center;padding:3px 8px;border:1px solid var(--rule);border-bottom-width:3px;border-radius:6px;font:700 .85rem var(--sans);background:var(--cream)}
-.keys table{width:100%;border-collapse:collapse;margin-top:12px}
-.keys td{padding:7px 0;border-bottom:1px solid var(--cream-2)}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700;800&family=Wix+Madefor+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231c2b45'/%3E%3Ctext x='16' y='21' font-family='Arial' font-weight='700' font-size='11' fill='white' text-anchor='middle'%3EUSF%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-
-<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-  <symbol id="i-play" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4.5v15l13-7.5z"/></symbol>
-  <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/></symbol>
-  <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></symbol>
-  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M18 6 6 18M6 6l12 12"/></symbol>
-  <symbol id="i-menu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16"/></symbol>
-  <symbol id="i-vol" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M11 5 6 9H2v6h4l5 4V5Zm4.5 3.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></symbol>
-</defs></svg>
-
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Tung Tung Tung Sahur Fan Club home"><span class="mini" data-tung="classic"></span>TUNG HQ</a>
-    <ul id="navlist">
-      <li><a href="#lore">Lore</a></li>
-      <li><a href="#collection">Collection</a></li>
-      <li><a href="#soundboard">Soundboard</a></li>
-      <li><a href="#rankings">Rankings</a></li>
-      <li><a href="#build">Build-a-Tung</a></li>
-      <li><a href="#quiz-sec">Quiz</a></li>
-      <li><a href="#club">Fan Club</a></li>
-    </ul>
-    <button class="btn present-btn" type="button" data-present title="Presentation mode (P)"><svg><use href="#i-play"/></svg>Present</button>
-    <button class="menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="navlist"><svg width="24" height="24"><use href="#i-menu"/></svg></button>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">
+      <span class="logo-mark">USF</span>
+      <span class="logo-text"><b>USFPRA</b><small>U.S. Foreign Policy Restriction Association</small></span>
+    </a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html" class="active" aria-current="page">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="issues.html">The Issues</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
+<main>
+<section class="hero" style="background-image:url('img/capitol.jpg')">
+  <div class="container">
+    <p class="tagline">United States Foreign Policy Restriction Association</p>
+    <h1>Putting National Interest Before Intervention</h1>
+    <p>We are a student-led interest group that believes America should lead with trade, diplomacy, and security, and only send troops into conflict when our national security truly depends on it.</p>
+    <a class="btn" href="about.html">Learn More</a>&nbsp;
+    <a class="btn btn-outline" href="get-involved.html">Get Involved</a>
+  </div>
+</section>
 
-<main id="main">
+<section class="strip">
+  <div class="container center reveal">
+    <h2>Who We Are</h2>
+    <hr class="divider">
+    <p class="lead">USFPRA is a public-interest and ideological interest group. We push for a more restrained U.S. foreign policy: one where Congress and the public have a real say before the country goes to war, and where diplomacy comes first.</p>
+    <p class="lead"><strong>Our mission:</strong> USFPRA promotes thoughtful limits, diplomacy, and public accountability in U.S. foreign policy.</p>
+  </div>
+</section>
 
-<!-- 1 · HERO -->
-<section class="slide night hero" id="top" data-title="Tung Tung Tung Sahur" data-speaker="Arivu">
-  <div class="sky" aria-hidden="true"><div class="moon"></div></div>
-  <div class="wrap grid">
-    <div>
-      <div class="eyebrow">The Official Fan Club</div>
-      <h1 class="chant" id="heroChant" aria-label="Tung Tung Tung Sahur"><span>TUNG</span> <span>TUNG</span> <span>TUNG</span><br><span class="sah">SAHUR</span></h1>
-      <p class="lede">He's a log. He has a bat. He shows up before sunrise and he will knock. This is everything you need to know about the internet's loudest piece of wood.</p>
-      <div class="cta-row">
-        <button class="btn" type="button" id="wake"><svg><use href="#i-vol"/></svg>Wake him up</button>
-        <button class="btn ghost" type="button" data-present><svg><use href="#i-play"/></svg>Start presentation</button>
+<section class="strip strip-gray">
+  <div class="container">
+    <div class="center reveal">
+      <h2>What We Stand For</h2>
+      <hr class="divider">
+    </div>
+    <div class="cols-3">
+      <div class="item reveal">
+        <img src="img/trade.jpg" alt="Aerial view of cargo ships and cranes at the Port of Miami">
+        <h3>Trade &amp; Economy</h3>
+        <p>Strong trade relationships keep Americans employed and goods affordable. Wars disrupt trade and raise prices at home, like the spike in gas prices since the Iran conflict began.</p>
       </div>
-      <p class="presenters">Presented by <strong>Arivu · Abdul · Ehan · Karthikeya</strong></p>
-    </div>
-    <div class="stage">
-      <div class="glow" aria-hidden="true"></div>
-      <div class="counter" aria-live="polite"><b id="tungCount">0</b>tungs this visit</div>
-      <button class="big-tung" type="button" id="bigTung" aria-label="Click Tung to make him chant"><span class="bub"></span></button>
-    </div>
-  </div>
-</section>
-
-<!-- 2 · LORE -->
-<section class="slide" id="lore" data-title="Who is Tung?" data-speaker="Arivu">
-  <div class="wrap">
-    <div class="head rv">
-      <div class="eyebrow">The lore</div>
-      <h2>Who is Tung Tung Tung Sahur?</h2>
-      <p class="lede">A wide-eyed wooden figure with a baseball bat who became one of the biggest memes of 2025. Here's where he came from.</p>
-    </div>
-    <div class="lore">
-      <div class="card rv"><div class="num">01</div><h3>The sound is real</h3><p>In Indonesia during Ramadan, neighbors wake each other before dawn for <strong>sahur</strong>, the meal eaten before a day of fasting. Groups walk the streets knocking on drums and wooden <em>kentongan</em>. <em>Tung, tung, tung.</em></p></div>
-      <div class="card rv"><div class="num">02</div><h3>The internet made him a log</h3><p>In early 2025, AI-generated videos on TikTok turned that knock into a character: a log with huge eyes, a bat, and a voice chanting “tung” over and over before yelling “sahur.”</p></div>
-      <div class="card rv"><div class="num">03</div><h3>He joined a universe</h3><p>Tung became a star of the <strong>“Italian brainrot”</strong> wave of absurd AI characters with chantable names. Fans remix him in edits, games, and fan art.</p>
-        <div class="cast"><span>Tralalero Tralala</span><span>Bombardiro Crocodilo</span><span>Ballerina Cappuccina</span><span>Brr Brr Patapim</span><span>Lirilì Larilà</span></div></div>
-    </div>
-    <div class="facts-row rv">
-      <div class="fact"><b>9×</b><span>“tung” in the classic chant before “sahur”</span></div>
-      <div class="fact"><b>1 bat</b><span>never seen without it</span></div>
-      <div class="fact"><b>~4 AM</b><span>his preferred hour of operation</span></div>
-      <div class="fact"><b>0</b><span>people who have slept through him</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- 3 · COLLECTION -->
-<section class="slide night" id="collection" data-title="The Tung Collection" data-speaker="Abdul">
-  <div class="sky" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="head rv">
-      <div class="eyebrow">Collect them all</div>
-      <h2>The Tung Collection</h2>
-      <p class="lede">Ten Tungs, ten jobs, one bat. Click any card to hear him go.</p>
-    </div>
-    <div class="coll rv" id="coll"></div>
-  </div>
-</section>
-
-<!-- 4 · SOUNDBOARD -->
-<section class="slide paper" id="soundboard" data-title="The Soundboard" data-speaker="Abdul">
-  <div class="wrap">
-    <div class="head rv">
-      <div class="eyebrow">Turn it up</div>
-      <h2>The Official Tung Soundboard</h2>
-      <p class="lede">Every pad is a different knock. Keys <kbd>Q</kbd> <kbd>W</kbd> <kbd>E</kbd> <kbd>A</kbd> <kbd>Z</kbd> <kbd>X</kbd> work too, so you can drum along.</p>
-    </div>
-    <div class="board rv">
-      <button class="pad" type="button" data-pad="knock" data-key="q">TUNG<small>one knock · Q</small></button>
-      <button class="pad" type="button" data-pad="triple" data-key="w">TUNG ×3<small>the classic · W</small></button>
-      <button class="pad" type="button" data-pad="nine" data-key="e">TUNG ×9<small>the original · E</small></button>
-      <button class="pad s" type="button" data-pad="sahur" data-key="a">SAHUR!<small>the voice · A</small></button>
-      <button class="pad g" type="button" data-pad="full" data-key="z">FULL CHANT<small>everything · Z</small></button>
-      <button class="pad" type="button" data-pad="bonk" data-key="x">BAT BONK<small>low and heavy · X</small></button>
-    </div>
-    <div class="tempo rv"><label for="tempo">Chant speed</label><input id="tempo" type="range" min="0.6" max="2" step="0.1" value="1"><span id="tempoVal" class="muted">1.0×</span></div>
-  </div>
-</section>
-
-<!-- 5 · RANKINGS -->
-<section class="slide" id="rankings" data-title="Power rankings" data-speaker="Ehan">
-  <div class="wrap">
-    <div class="head rv">
-      <div class="eyebrow">Brainrot power rankings</div>
-      <h2>Who wins the universe?</h2>
-      <p class="lede">We scored the biggest characters on chant power, bat skill, and how fast they wake you up.</p>
-    </div>
-    <div class="rank rv">
-      <div class="rrow me"><div class="nm">Tung Tung Tung Sahur<small>log · bat · alarm clock</small></div><div class="track"><div class="fill" data-w="98"></div></div><div class="sc">98</div></div>
-      <div class="rrow"><div class="nm">Tralalero Tralala<small>shark in sneakers</small></div><div class="track"><div class="fill" data-w="91"></div></div><div class="sc">91</div></div>
-      <div class="rrow"><div class="nm">Bombardiro Crocodilo<small>crocodile, but a plane</small></div><div class="track"><div class="fill" data-w="88"></div></div><div class="sc">88</div></div>
-      <div class="rrow"><div class="nm">Ballerina Cappuccina<small>coffee, but ballet</small></div><div class="track"><div class="fill" data-w="80"></div></div><div class="sc">80</div></div>
-      <div class="rrow"><div class="nm">Brr Brr Patapim<small>forest guy with feet</small></div><div class="track"><div class="fill" data-w="74"></div></div><div class="sc">74</div></div>
-    </div>
-    <p class="disc rv">Rankings are 100% scientifically made up by the four of us. Tung did not pay us. (He tried. With a bat.)</p>
-  </div>
-</section>
-
-<!-- 6 · BUILD -->
-<section class="slide paper" id="build" data-title="Build-a-Tung" data-speaker="Ehan">
-  <div class="wrap">
-    <div class="head rv">
-      <div class="eyebrow">Make your own</div>
-      <h2>Build-a-Tung</h2>
-      <p class="lede">Pick a job, a face, and a wood. Then click your Tung to hear him.</p>
-    </div>
-    <div class="builder">
-      <div class="preview rv"><div class="tag" id="bName">Classic Oak Tung</div><div class="art" id="bArt" role="button" tabindex="0" aria-label="Your Tung. Click to chant."><span class="bub"></span></div></div>
-      <div class="rv">
-        <div class="opts-group"><b>Job</b><div class="chips" id="bHat"></div></div>
-        <div class="opts-group"><b>Face</b><div class="chips" id="bFace"></div></div>
-        <div class="opts-group"><b>Wood</b><div class="chips" id="bWood"></div></div>
-        <div class="cta-row"><button class="btn" type="button" id="bRandom">Randomize</button><button class="btn wood" type="button" id="bChant"><svg><use href="#i-vol"/></svg>Make him chant</button></div>
+      <div class="item reveal">
+        <img src="img/senate.jpg" alt="The Old Senate Chamber in the U.S. Capitol">
+        <h3>Diplomacy &amp; Oversight</h3>
+        <p>The Constitution gives Congress the power to declare war. We want Congress to use it, and we want negotiations and alliances tried before force.</p>
+      </div>
+      <div class="item reveal">
+        <img src="img/capitol-full.jpg" alt="Full view of the U.S. Capitol building">
+        <h3>Security &amp; Peace</h3>
+        <p>We are not against defending the country. Military action should stay on the table for real threats to national security, decided openly and with a clear goal.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- 7 · QUIZ -->
-<section class="slide" id="quiz-sec" data-title="Tung trivia" data-speaker="Karthikeya">
-  <div class="wrap">
-    <div class="head rv">
-      <div class="eyebrow">Prove it</div>
-      <h2>How well do you know Tung?</h2>
+<section class="strip strip-navy">
+  <div class="container">
+    <div class="center reveal">
+      <h2>Why This Matters Right Now</h2>
+      <hr class="divider">
+      <p class="lead">On February 28, 2026, U.S. and Israeli strikes on Iran started a regional war. Congress never voted to authorize it.<sup><a href="sources.html#s4">4</a>, <a href="sources.html#s5">5</a></sup> Here is what it has cost so far.</p>
     </div>
-    <div class="qwrap">
-      <div class="quiz rv" id="quiz" aria-live="polite">
-        <div class="prog" aria-hidden="true"></div>
-        <div class="q"></div>
-        <div class="opts"></div>
-        <div class="explain"></div>
-        <div class="qfoot"><span class="muted small score"></span><button class="btn" type="button" id="qnext" hidden>Next</button></div>
-      </div>
-      <div class="quiz-tung rv"><div class="art" id="qTung"><span class="bub"></span></div></div>
+    <div class="numbers reveal">
+      <div><b>$38 billion</b><span>U.S. military cost as of Aug. 1, 2026 (CBO)<sup><a href="sources.html#s4">4</a></sup></span></div>
+      <div><b>~$2,000</b><span>Estimated cost per American household, including gas and interest rates<sup><a href="sources.html#s8">8</a></sup></span></div>
+      <div><b>165+ days</b><span>With gas at or above $4 a gallon in 2026, the most on record<sup><a href="sources.html#s8">8</a></sup></span></div>
+      <div><b>0</b><span>Votes by Congress authorizing the war<sup><a href="sources.html#s5">5</a></sup></span></div>
     </div>
+    <p class="center" style="margin-top:36px"><a class="btn btn-outline" href="issues.html">Read About the Issues</a></p>
   </div>
 </section>
 
-<!-- 8 · FAN CLUB -->
-<section class="slide night" id="club" data-title="Join the Fan Club" data-speaker="Karthikeya">
-  <div class="sky" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="head rv">
-      <div class="eyebrow">Join the club</div>
-      <h2>The Tung Tung Tung Fan Club</h2>
-      <p class="lede">Membership comes with merch, events, and the right to yell “SAHUR” in public.</p>
-    </div>
-    <div class="club">
-      <div class="rv">
-        <h3>Pick your tier</h3>
-        <div class="tiers">
-          <button class="tier" type="button" data-tier="Twig – $1"><div class="p">$1</div><div class="nm">Twig</div><div class="d">Sticker + chant alerts</div></button>
-          <button class="tier" type="button" data-tier="Log – $5"><div class="p">$5</div><div class="nm">Log</div><div class="d">Sticker, “I Got Tung'd” tee</div></button>
-          <button class="tier" type="button" data-tier="Full Bat – $20"><div class="p">$20</div><div class="nm">Full Bat</div><div class="d">Tee + foam bat + name on the wall</div></button>
-        </div>
-        <h3 style="margin-bottom:12px">Club events</h3>
-        <div class="events">
-          <div><b>Week 1</b><span>Tung-off: the loudest chant in the Commons wins a foam bat</span></div>
-          <div><b>Week 4</b><span>Build-a-Tung art night (cardboard logs supplied)</span></div>
-          <div><b>Week 8</b><span>Brainrot trivia night, teams of four</span></div>
-          <div><b>Week 12</b><span>The Great Tung Costume Contest</span></div>
-        </div>
-      </div>
-      <div class="form-card rv">
-        <h3 style="margin-bottom:6px">Sign up</h3>
-        <p class="muted small">We'll send you event invites and new Tungs.</p>
-        <form name="join" method="POST" data-netlify="true" netlify-honeypot="company" id="joinform" novalidate>
-          <input type="hidden" name="form-name" value="join">
-          <p hidden><label>Leave blank <input name="company"></label></p>
-          <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
-          <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="err" id="e-email"></span></div>
-          <div class="field"><label for="f-fav">Favorite Tung</label><select id="f-fav" name="favorite"></select></div>
-          <div class="field"><label for="f-tier">Tier</label><select id="f-tier" name="tier"><option>Just looking</option><option>Twig – $1</option><option>Log – $5</option><option>Full Bat – $20</option></select></div>
-          <fieldset class="field" style="border:0;padding:0;margin:0 0 14px"><legend>I'm in for…</legend>
-            <div class="checks">
-              <label><input type="checkbox" name="interest" value="tungoff">The Tung-off</label>
-              <label><input type="checkbox" name="interest" value="art">Art night</label>
-              <label><input type="checkbox" name="interest" value="trivia">Trivia night</label>
-              <label><input type="checkbox" name="interest" value="costume">Costume contest</label>
-            </div>
-          </fieldset>
-          <button class="btn" type="submit" style="width:100%">Join the club</button>
-          <p class="help" style="margin-top:10px">No payment is collected on this site. We only use your email for club updates.</p>
-        </form>
-        <div class="ok" id="joinok" role="status">You're in. TUNG TUNG TUNG SAHUR!</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 9 · SIDENOTE -->
-<section class="slide" id="sidenote" data-title="One more thing" data-speaker="All">
-  <div class="wrap">
-    <div class="sidenote rv">
-      <div class="art" data-tung="graduate" data-face="0"></div>
+<section class="strip">
+  <div class="container">
+    <div class="split reveal">
+      <img src="img/memorial.jpg" alt="Names engraved on the Vietnam Veterans Memorial wall">
       <div>
-        <div class="tagline">Sidenote · Tung's one serious opinion</div>
-        <h3>Tung supports USFPRA</h3>
-        <p>When he isn't waking up the neighborhood, Tung backs the <strong>United States Foreign Policy Restriction Administration</strong>, a student interest group with one idea: <em>before America goes to war, Congress should vote on it.</em> Slogan: “Putting National Interest Before Intervention.”</p>
-        <p style="margin:0"><a href="serious.html">Read the full USFPRA platform →</a></p>
+        <h2>We've Been Here Before</h2>
+        <hr class="divider">
+        <p>Historians ranked the 2003 invasion of Iraq and the 1965 decision to send combat troops to Vietnam as the two <strong>worst</strong> foreign policy decisions in U.S. history.<sup><a href="sources.html#s14">14</a></sup> Both wars started with rushed decisions, cost far more than promised, and did not reach their goals.</p>
+        <p>The same survey ranked the Marshall Plan, the creation of the United Nations, and NATO among the best. Those were built on diplomacy and economic partnership.</p>
+        <a class="btn btn-navy" href="history.html">Lessons From History</a>
       </div>
     </div>
-    <div class="outro rv">
-      <p class="chant" aria-label="Tung Tung Tung Sahur"><span>TUNG</span> <span>TUNG</span> <span>TUNG</span> <span class="sah">SAHUR</span></p>
-      <p class="muted">Thanks for listening. Questions? Tung is ready.</p>
-    </div>
+  </div>
+</section>
+
+<section class="strip strip-photo" style="background-image:url('img/campus.jpg')">
+  <div class="container center reveal">
+    <h2>College Students Have the Most at Stake</h2>
+    <hr class="divider">
+    <p class="lead">Starting in December 2026, men ages 18 to 25 will be automatically registered for the Selective Service.<sup><a href="sources.html#s20">20</a></sup> The debt from today's wars will be paid by our generation. We think young people deserve a voice in these decisions.</p>
+    <a class="btn" href="get-involved.html">Join USFPRA</a>
   </div>
 </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <span>Tung Tung Tung Sahur Fan Club · Arivu, Abdul, Ehan &amp; Karthikeya · 2026. A fan project, not affiliated with the meme's creators.</span>
-    <span><a href="Tung-Flyer.pdf" download>Flyer (PDF)</a> · <a href="serious.html">USFPRA</a> · Press <strong>P</strong> to present, <strong>S</strong> to hide the peeking Tungs</span>
+<section class="strip strip-red center">
+  <div class="container">
+    <h2>Join Our Mailing List</h2>
+    <p>Get updates on votes in Congress, campus events, and ways to take action.</p>
+    <form class="subscribe-form" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="newsletter">
+      <p hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+      <div class="subscribe">
+        <input type="email" name="email" placeholder="Enter your email here" aria-label="Email" required>
+        <button type="submit">Subscribe</button>
+      </div>
+      <p class="form-msg" aria-live="polite"></p>
+    </form>
   </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <h4>USFPRA</h4>
+      <p>United States Foreign Policy Restriction Association<br>
+      <em>"Putting National Interest Before Intervention"</em></p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="issues.html">The Issues</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="get-involved.html">Get Involved</a></li>
+        <li><a href="sources.html">Sources</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Follow Us</h4>
+      <ul>
+        <li>Instagram: @usfpra</li>
+        <li>TikTok: @usfpra</li>
+        <li><a href="USFPRA-Flyer.pdf">Download our flyer (PDF)</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="copyright">&copy; <span class="year">2026</span> by USFPRA. Founded by Ehan, Ari, Abdul &amp; Karthikeya.</p>
 </footer>
-
-<div class="hud" role="toolbar" aria-label="Presentation controls">
-  <button type="button" data-prev aria-label="Previous"><svg><use href="#i-left"/></svg></button>
-  <div class="dots" aria-hidden="true"></div>
-  <button type="button" data-next aria-label="Next"><svg><use href="#i-right"/></svg></button>
-  <div class="who"><span class="hud-title"></span><b class="hud-speaker"></b></div>
-  <span class="more" aria-hidden="true">↓ more</span>
-  <span class="clock" title="Elapsed (T to reset)">00:00</span>
-  <button type="button" data-exit aria-label="Exit presentation (Esc)"><svg><use href="#i-x"/></svg></button>
-</div>
-<div class="keys" role="dialog" aria-modal="true" aria-label="Keyboard shortcuts">
-  <div class="box">
-    <h3>Shortcuts</h3>
-    <table>
-      <tr><td><kbd>P</kbd></td><td>Start / stop presentation</td></tr>
-      <tr><td><kbd>→</kbd> <kbd>Space</kbd></td><td>Next (shows the rest of a long slide first)</td></tr>
-      <tr><td><kbd>←</kbd></td><td>Back</td></tr>
-      <tr><td><kbd>1</kbd>–<kbd>9</kbd></td><td>Jump to slide</td></tr>
-      <tr><td><kbd>F</kbd></td><td>Full screen</td></tr>
-      <tr><td><kbd>T</kbd></td><td>Reset timer</td></tr>
-      <tr><td><kbd>S</kbd></td><td>Hide / show peeking Tungs</td></tr>
-      <tr><td><kbd>Q W E A Z X</kbd></td><td>Soundboard pads (when not presenting)</td></tr>
-    </table>
-    <p class="small muted" style="margin:14px 0 0">Press <kbd>?</kbd> to close.</p>
-  </div>
-</div>
-
-<script>
-(() => {
-  const $ = (s, r = document) => r.querySelector(s);
-  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const rand = a => a[Math.floor(Math.random() * a.length)];
-
-  /* ---------- the Tung drawing ---------- */
-  const COSTUMES = {
-    classic: { name: 'Classic Tung', rar: 'c', blurb: 'The original. Knocks first, asks never.' },
-    plumber: { name: 'Plumber Tung', rar: 'r', blurb: 'Fixes your pipes. Bonks them first.',
-      over: '<path d="M19 33Q40 2 61 33Z" fill="#D62828"/><rect x="40" y="29" width="27" height="6" rx="3" fill="#A61C1C"/><circle cx="40" cy="21" r="5" fill="#fff"/><path d="M29 63q5-6 11 0q6-6 11 0q-6 5-11 1q-5 4-11-1z" fill="#3A2410"/><path d="M22 86h36v24a6 6 0 0 1-6 6H28a6 6 0 0 1-6-6z" fill="#1D4ED8"/><path d="M27 86V74M53 86V74" stroke="#1D4ED8" stroke-width="5"/><circle cx="29" cy="90" r="2.5" fill="#FACC15"/><circle cx="51" cy="90" r="2.5" fill="#FACC15"/>' },
-    monkey: { name: 'Monkey Tung', rar: 'r', body: '#8B5E3C', blurb: 'Swings from trees. Swings the bat harder.',
-      back: '<path d="M24 100q-22 4-16-18q4-12 12-6" fill="none" stroke="#6B4423" stroke-width="5" stroke-linecap="round"/><circle cx="19" cy="52" r="9" fill="#6B4423"/><circle cx="19" cy="52" r="5" fill="#E0B48A"/><circle cx="61" cy="52" r="9" fill="#6B4423"/><circle cx="61" cy="52" r="5" fill="#E0B48A"/>',
-      under: '<ellipse cx="40" cy="58" rx="15" ry="15" fill="#E0B48A"/>', over: '<path d="M37 36q3-8 6 0" stroke="#3A2410" stroke-width="2" fill="none"/>' },
-    astronaut: { name: 'Astro Tung', rar: 'e', blurb: 'In space, no one can hear you sahur.',
-      back: '<rect x="14" y="66" width="10" height="26" rx="3" fill="#94A3B8"/>',
-      over: '<circle cx="40" cy="54" r="25" fill="rgba(186,230,253,.35)" stroke="#E2E8F0" stroke-width="4"/><path d="M28 40a14 10 0 0 1 10-7" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/><line x1="40" y1="29" x2="40" y2="16" stroke="#CBD5E1" stroke-width="2"/><circle cx="40" cy="14" r="3.5" fill="#EF4444"/><rect x="28" y="88" width="24" height="10" rx="2" fill="#E2E8F0"/><circle cx="34" cy="93" r="2" fill="#22C55E"/><circle cx="41" cy="93" r="2" fill="#EF4444"/>' },
-    chef: { name: 'Chef Tung', rar: 'c', blurb: 'Makes the sahur meal. Rings the dinner bat.',
-      over: '<path d="M24 30h32v-7a8 8 0 0 0-4-14a9 9 0 0 0-12-5a9 9 0 0 0-12 5a8 8 0 0 0-4 14z" fill="#fff" stroke="#CBD5E1" stroke-width="1.5"/><path d="M27 78l13 9l13-9" fill="#DC2626"/>' },
-    investor: { name: 'Tycoon Tung', rar: 'e', blurb: 'Owns three lumber yards. Still knocks.',
-      over: '<rect x="27" y="-4" width="26" height="25" rx="2" fill="#111827"/><rect x="27" y="14" width="26" height="4" fill="#B91C1C"/><rect x="18" y="19" width="44" height="5" rx="2.5" fill="#111827"/><circle cx="47" cy="51" r="7.5" fill="none" stroke="#D4AF37" stroke-width="1.5"/><path d="M54 53l4 10" stroke="#D4AF37" stroke-width="1"/><path d="M37 78h6l2 4-3 20h-4l-3-20z" fill="#1E3A8A"/>' },
-    graduate: { name: 'Grad Tung', rar: 'r', blurb: 'Majored in percussion. Minored in waking people up.',
-      over: '<path d="M40 8L68 19L40 30L12 19Z" fill="#111827"/><rect x="29" y="22" width="22" height="9" fill="#111827"/><path d="M62 21v16" stroke="#EAB308" stroke-width="2"/><circle cx="62" cy="39" r="3" fill="#EAB308"/>' },
-    ninja: { name: 'Ninja Tung', rar: 'e', blurb: 'Silent, until he isn\'t.',
-      over: '<rect x="20" y="38" width="40" height="7" fill="#DC2626"/><path d="M20 41q-10 2-14 10M20 43q-8 6-9 14" stroke="#DC2626" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="22" y="58" width="36" height="20" fill="#111827" opacity=".92"/>' },
-    pirate: { name: 'Pirate Tung', rar: 'r', blurb: 'Technically a wooden leg. All of him.',
-      over: '<path d="M14 30Q40 2 66 30Q40 22 14 30Z" fill="#111827"/><path d="M34 13l6 6l6-6M34 19l12-6" stroke="#fff" stroke-width="1.6"/><path d="M22 44L56 56" stroke="#111827" stroke-width="2"/><circle cx="33" cy="50" r="7" fill="#111827"/><path d="M48 66q-4 8 2 12" stroke="#EAB308" stroke-width="2" fill="none"/>' },
-    wizard: { name: 'Wizard Tung', rar: 'l', blurb: 'His spell is just “TUNG.” It works every time.',
-      over: '<path d="M18 30L44 -14L62 30Z" fill="#5B21B6"/><path d="M14 30h52" stroke="#4C1D95" stroke-width="5" stroke-linecap="round"/><path d="M36 10l1.5 3 3 .4-2.2 2 .6 3-2.9-1.5-2.9 1.5.6-3-2.2-2 3-.4z" fill="#FDE047"/><path d="M26 66q14 34 28 0q-6 6-14 4q-8 2-14-4z" fill="#F1F5F9"/>' }
-  };
-  const RAR = { c: 'COMMON', r: 'RARE', e: 'EPIC', l: 'LEGENDARY' };
-  function tungSVG(k, body) {
-    const v = COSTUMES[k] || {}; body = body || v.body || '#C99A62';
-    return `<svg class="tung" viewBox="0 0 80 120" aria-hidden="true">${v.back || ''}
-      <rect x="22" y="20" width="36" height="96" rx="16" fill="${body}" stroke="#6B4423" stroke-width="2"/>
-      <path d="M30 30q-3 14 0 28M50 84q3 12 0 24M46 28q2 8 0 14" stroke="#6B4423" stroke-width="1.2" fill="none" opacity=".55"/>
-      <line x1="58" y1="76" x2="68" y2="66" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
-      <line x1="22" y1="76" x2="13" y2="86" stroke="#6B4423" stroke-width="3" stroke-linecap="round"/>
-      <rect x="64" y="14" width="9" height="56" rx="4.5" fill="#8B5A2B" stroke="#5C3A1A" stroke-width="1.5" transform="rotate(14 68 64)"/>
-      ${v.under || ''}
-      <g class="f0"><circle cx="33" cy="51" r="6.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="47" cy="51" r="6.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="34.5" cy="52" r="2.8" fill="#111"/><circle cx="48.5" cy="52" r="2.8" fill="#111"/><path d="M27 42l10 3M53 42l-10 3" stroke="#3A2410" stroke-width="2" stroke-linecap="round"/><path d="M33 68q7 6 14 0" stroke="#3A2410" stroke-width="2" fill="none" stroke-linecap="round"/></g>
-      <g class="f1"><circle cx="32" cy="50" r="9" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="48" cy="50" r="9" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="32" cy="50" r="1.8" fill="#111"/><circle cx="48" cy="50" r="1.8" fill="#111"/><path d="M24 36l11 5M56 36l-11 5" stroke="#3A2410" stroke-width="2.6" stroke-linecap="round"/><ellipse cx="40" cy="70" rx="7" ry="8" fill="#3B0D0D" stroke="#1F1F1F" stroke-width="1.5"/><ellipse cx="40" cy="74" rx="4" ry="3" fill="#E35D6A"/></g>
-      <g class="f2"><path d="M26.5 51a6.5 6.5 0 0 0 13 0z" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><path d="M40.5 51a6.5 6.5 0 0 0 13 0z" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="33" cy="53" r="2.4" fill="#111"/><circle cx="47" cy="53" r="2.4" fill="#111"/><path d="M25 40l13 8M55 40l-13 8" stroke="#3A2410" stroke-width="3" stroke-linecap="round"/><rect x="30" y="64" width="20" height="8" rx="2" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><path d="M35 64v8M40 64v8M45 64v8M30 68h20" stroke="#1F1F1F" stroke-width="1"/></g>
-      <g class="f3"><circle cx="32" cy="50" r="9.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="48" cy="52" r="4.5" fill="#fff" stroke="#1F1F1F" stroke-width="1.5"/><circle cx="29" cy="46" r="3.5" fill="#111"/><circle cx="49.5" cy="54" r="1.8" fill="#111"/><path d="M24 37q8-6 14 2M44 44q6-3 11 1" stroke="#3A2410" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M31 66q9 8 18-1" stroke="#3A2410" stroke-width="2.2" fill="none" stroke-linecap="round"/><path d="M41 68q1 9 6 8q4-1 1-9" fill="#E35D6A" stroke="#1F1F1F" stroke-width="1"/></g>
-      ${v.over || ''}</svg>`;
-  }
-  $$('[data-tung]').forEach(el => el.insertAdjacentHTML('afterbegin', tungSVG(el.dataset.tung)));
-  $('#bigTung').insertAdjacentHTML('afterbegin', tungSVG('classic'));
-  $('#qTung').insertAdjacentHTML('afterbegin', tungSVG('wizard'));
-
-  /* ---------- audio ---------- */
-  let actx, voice, speed = 1, tungs = 0;
-  const unlock = () => { try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); } catch (_) {} };
-  addEventListener('pointerdown', unlock, { passive: true });
-  addEventListener('keydown', unlock);
-  const pickVoice = () => {
-    if (!('speechSynthesis' in window)) return null;
-    const vs = speechSynthesis.getVoices().filter(v => /^en/i.test(v.lang));
-    return vs.find(v => /daniel|fred|alex|google uk english male|male/i.test(v.name)) || vs[0] || null;
-  };
-  if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => { voice = pickVoice(); };
-  function knock(t = 0, deep = false) {
-    tungs++; const c = $('#tungCount'); if (c) c.textContent = tungs;
-    if (!actx || actx.state !== 'running') return;
-    const at = actx.currentTime + t;
-    const parts = deep ? [[140, 50, .9, .4, 'sine'], [500, 160, .3, .06, 'triangle']]
-                       : [[300, 120, .55, .22, 'sine'], [900, 400, .25, .05, 'triangle']];
-    parts.forEach(([f0, f1, vol, dur, type]) => {
-      const o = actx.createOscillator(), g = actx.createGain();
-      o.type = type; o.frequency.setValueAtTime(f0, at); o.frequency.exponentialRampToValueAtTime(f1, at + dur);
-      g.gain.setValueAtTime(vol, at); g.gain.exponentialRampToValueAtTime(.001, at + dur);
-      o.connect(g).connect(actx.destination); o.start(at); o.stop(at + dur + .02);
-    });
-  }
-  function say(text) {
-    if (!('speechSynthesis' in window) || !navigator.userActivation?.hasBeenActive) return;
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    voice = voice || pickVoice(); if (voice) u.voice = voice;
-    u.rate = Math.min(2, 1.05 * speed); u.pitch = .45;
-    speechSynthesis.speak(u);
-  }
-
-  /* ---------- chant: face + bubble + knocks + voice, on any Tung element ---------- */
-  const heroSpans = $$('#heroChant span');
-  function chant(el, n = 3, opts = {}) {
-    if (!el || el._busy) return;
-    el._busy = true;
-    const bub = el.querySelector('.bub'), step = 380 / speed;
-    const face = opts.face ?? 1 + Math.floor(Math.random() * 3);
-    el.dataset.face = face;
-    el.classList.add('talk', 'go');
-    for (let i = 0; i < n; i++) setTimeout(() => {
-      if (bub) bub.textContent = n > 4 ? `TUNG ×${i + 1}` : Array(i + 1).fill('TUNG').join(' ');
-      knock(0);
-      if (opts.hero) heroSpans.forEach((s, j) => s.classList.toggle('lit', j === Math.min(i, 2)));
-    }, i * step);
-    setTimeout(() => {
-      if (bub) bub.textContent = (n > 4 ? 'TUNG ×' + n : Array(n).fill('TUNG').join(' ')) + ' SAHUR!';
-      if (opts.hero) heroSpans.forEach((s, j) => s.classList.toggle('lit', j === 3));
-    }, n * step);
-    say(Array(n).fill('Tung.').join(' ') + ' Sahur!');
-    setTimeout(() => {
-      el.classList.remove('talk', 'go'); if (!opts.keepFace) delete el.dataset.face; el._busy = false;
-      if (opts.hero) heroSpans.forEach(s => s.classList.remove('lit'));
-    }, n * step + 1600);
-  }
-
-  /* hero */
-  const big = $('#bigTung');
-  big.addEventListener('click', () => { unlock(); chant(big, 3, { hero: true }); });
-  $('#wake').addEventListener('click', () => { unlock(); chant(big, 9, { hero: true }); });
-
-  /* collection */
-  const coll = $('#coll');
-  coll.innerHTML = Object.entries(COSTUMES).map(([k, v]) =>
-    `<button class="tcard" type="button" data-k="${k}" aria-label="${v.name}: click to chant"><span class="rar ${v.rar}">${RAR[v.rar]}</span><div class="art">${tungSVG(k)}<span class="bub"></span></div><h3>${v.name}</h3><p>${v.blurb}</p></button>`).join('');
-  coll.addEventListener('click', e => { const c = e.target.closest('.tcard'); if (!c) return; unlock(); const a = c.querySelector('.art'); c.classList.add('go'); chant(a, 3); setTimeout(() => c.classList.remove('go'), 3000); });
-
-  /* soundboard */
-  const pads = {
-    knock: () => knock(0),
-    triple: () => [0, 1, 2].forEach(i => knock(i * .38 / speed)),
-    nine: () => Array.from({ length: 9 }, (_, i) => knock(i * .3 / speed)),
-    sahur: () => say('Sahur!'),
-    full: () => chant(big, 9, { hero: true }),
-    bonk: () => knock(0, true)
-  };
-  function hitPad(p) { unlock(); setTimeout(() => pads[p.dataset.pad](), 10); p.classList.add('hit'); setTimeout(() => p.classList.remove('hit'), 120); }
-  $$('.pad').forEach(p => p.addEventListener('click', () => hitPad(p)));
-  const tempo = $('#tempo');
-  tempo.addEventListener('input', () => { speed = +tempo.value; $('#tempoVal').textContent = speed.toFixed(1) + '×'; });
-
-  /* builder */
-  const B = { hat: 'classic', face: 0, wood: '#C99A62' };
-  const WOODS = { Oak: '#C99A62', Birch: '#E3C48F', Walnut: '#8B5E3C', Ebony: '#4A3426', Cherry: '#B5562F' };
-  const FACES = ['Chill', 'Shouting', 'Angry', 'Unhinged'];
-  const bArt = $('#bArt');
-  function chips(id, items, key, label) {
-    $(id).innerHTML = items.map(([val, text, sw]) => sw
-      ? `<button type="button" class="sw" style="background:${sw}" data-v="${val}" aria-label="${text}" title="${text}"></button>`
-      : `<button type="button" class="chip" data-v="${val}">${text}</button>`).join('');
-    $(id).addEventListener('click', e => { const b = e.target.closest('[data-v]'); if (!b) return; B[key] = key === 'face' ? +b.dataset.v : b.dataset.v; renderB(); });
-  }
-  chips('#bHat', Object.entries(COSTUMES).map(([k, v]) => [k, v.name.replace(' Tung', '')]), 'hat');
-  chips('#bFace', FACES.map((f, i) => [i, f]), 'face');
-  chips('#bWood', Object.entries(WOODS).map(([n, c]) => [c, n, c]), 'wood');
-  function renderB() {
-    bArt.innerHTML = tungSVG(B.hat, B.wood) + '<span class="bub"></span>';
-    bArt.dataset.face = B.face;
-    const wood = Object.keys(WOODS).find(n => WOODS[n] === B.wood);
-    $('#bName').textContent = `${FACES[B.face]} ${wood} ${COSTUMES[B.hat].name}`;
-    $$('#bHat [data-v]').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === B.hat));
-    $$('#bFace [data-v]').forEach(b => b.setAttribute('aria-pressed', +b.dataset.v === B.face));
-    $$('#bWood [data-v]').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === B.wood));
-  }
-  renderB();
-  const bGo = () => { unlock(); chant(bArt, 3, { face: B.face || 1, keepFace: true }); setTimeout(() => { bArt.dataset.face = B.face; }, 3400); };
-  bArt.addEventListener('click', bGo);
-  bArt.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); bGo(); } });
-  $('#bChant').addEventListener('click', bGo);
-  $('#bRandom').addEventListener('click', () => {
-    B.hat = rand(Object.keys(COSTUMES)); B.face = Math.floor(Math.random() * 4); B.wood = rand(Object.values(WOODS)); renderB();
-  });
-
-  /* quiz */
-  const Q = [
-    { q: 'How many times does he say “tung” in the classic chant before “sahur”?', o: ['3', '5', '9', '12'], a: 2, e: 'Nine. TUNG TUNG TUNG TUNG TUNG TUNG TUNG TUNG TUNG SAHUR. Try the ×9 pad on the soundboard.' },
-    { q: 'What is “sahur”?', o: ['A kind of drum', 'The meal eaten before dawn during Ramadan', 'An Italian pasta', 'A dance move'], a: 1, e: 'Sahur is the pre-dawn meal before a day of fasting during Ramadan. In Indonesia, people knock and drum in the streets to wake neighbors for it.' },
-    { q: 'Which country does the “tung tung” wake-up knock come from?', o: ['Italy', 'Indonesia', 'Brazil', 'Japan'], a: 1, e: 'Indonesia. The meme is called “Italian brainrot,” but Tung\'s roots are Indonesian.' },
-    { q: 'What is Tung always holding?', o: ['A microphone', 'A spoon', 'A baseball bat', 'A flag'], a: 2, e: 'A bat. He uses it to knock. Usually on doors.' },
-    { q: 'Which of these is NOT part of the brainrot universe?', o: ['Tralalero Tralala', 'Bombardiro Crocodilo', 'Ballerina Cappuccina', 'Shrek'], a: 3, e: 'Shrek is an ogre with his own swamp. The other three are Tung\'s friends.' }
-  ];
-  let qi = 0, score = 0;
-  const qz = $('#quiz'), prog = $('.prog', qz), qq = $('.q', qz), opts = $('.opts', qz), ex = $('.explain', qz), nx = $('#qnext'), sc = $('.score', qz), qT = $('#qTung');
-  prog.innerHTML = Q.map(() => '<i></i>').join('');
-  function render() {
-    $$('i', prog).forEach((d, i) => d.classList.toggle('on', i <= qi));
-    if (qi >= Q.length) {
-      qq.textContent = score === Q.length ? 'Perfect. You are certified Tung.' : `You got ${score} of ${Q.length}. Tung believes in you.`;
-      opts.innerHTML = ''; ex.className = 'explain show'; ex.innerHTML = 'Now <a href="#club">join the fan club</a>.';
-      nx.textContent = 'Retake'; nx.hidden = false; sc.textContent = ''; return;
-    }
-    const it = Q[qi];
-    qq.textContent = `${qi + 1}. ${it.q}`;
-    opts.innerHTML = it.o.map((o, i) => `<button class="opt" type="button" data-i="${i}">${o}</button>`).join('');
-    ex.className = 'explain'; nx.hidden = true; sc.textContent = `Question ${qi + 1} of ${Q.length}`;
-  }
-  opts.addEventListener('click', e => {
-    const b = e.target.closest('.opt'); if (!b) return;
-    const it = Q[qi], pick = +b.dataset.i, ok = pick === it.a;
-    $$('.opt', opts).forEach((x, i) => { x.disabled = true; if (i === it.a) x.classList.add('right'); });
-    if (ok) { score++; chant(qT, 3, { face: 1 }); } else { b.classList.add('wrong'); qT.dataset.face = 2; knock(0, true); setTimeout(() => delete qT.dataset.face, 1500); }
-    ex.innerHTML = `<strong>${ok ? 'Correct!' : 'Nope.'}</strong> ${it.e}`; ex.className = 'explain show';
-    nx.textContent = qi === Q.length - 1 ? 'See my score' : 'Next'; nx.hidden = false;
-  });
-  nx.addEventListener('click', () => { if (qi >= Q.length) { qi = 0; score = 0; } else qi++; render(); });
-  render();
-
-  /* fan club form */
-  $('#f-fav').innerHTML = Object.values(COSTUMES).map(v => `<option>${v.name}</option>`).join('');
-  $$('[data-tier]').forEach(b => b.addEventListener('click', () => { $('#f-tier').value = b.dataset.tier; $('#f-name').focus(); }));
-  const form = $('#joinform');
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const em = $('#f-email'), nm = $('#f-name'), err = $('#e-email'); err.textContent = '';
-    if (!nm.value.trim()) { nm.focus(); return; }
-    if (!/^\S+@\S+\.\S+$/.test(em.value)) { err.textContent = 'Please enter a valid email address.'; em.focus(); return; }
-    const btn = $('button[type=submit]', form); btn.disabled = true; btn.textContent = 'Joining…';
-    try {
-      const onNetlify = location.hostname.endsWith('netlify.app');
-      const r = await fetch(onNetlify ? '/' : 'https://usfpra.netlify.app/', { method: 'POST', mode: onNetlify ? 'same-origin' : 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString() });
-      if (onNetlify && !r.ok) throw 0;
-      form.hidden = true; $('#joinok').classList.add('show'); chant(big, 3);
-    } catch { btn.disabled = false; btn.textContent = 'Join the club'; err.textContent = 'Couldn\'t reach our sign-up server. Your network may block it.'; }
-  });
-
-  /* stars */
-  $$('.sky').forEach(sky => { for (let i = 0; i < 40; i++) { const s = document.createElement('i'); s.style.cssText = `left:${Math.random() * 100}%;top:${Math.random() * 100}%;animation-delay:${Math.random() * 3}s;opacity:${.3 + Math.random() * .6}`; sky.appendChild(s); } });
-
-  /* reveal */
-  const io = new IntersectionObserver(es => es.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add('in'); $$('.fill', e.target).forEach(f => f.style.width = f.dataset.w + '%'); io.unobserve(e.target);
-  }), { threshold: .12 });
-  $$('.rv').forEach(el => io.observe(el));
-
-  /* mobile menu */
-  const mb = $('.menu-btn'), nl = $('#navlist');
-  mb.addEventListener('click', () => { const o = nl.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
-  nl.addEventListener('click', e => { if (e.target.tagName === 'A') nl.classList.remove('open'); });
-
-  /* ---------- peeking Tungs at section edges ---------- */
-  const spots = [['lore', 'plumber', 'r'], ['collection', 'monkey', 'r top'], ['soundboard', 'ninja', 'l'], ['rankings', 'astronaut', 'r'],
-                 ['build', 'pirate', 'r'], ['quiz-sec', 'chef', 'l'], ['club', 'investor', 'r'], ['sidenote', 'wizard', 'l']];
-  const peekers = spots.map(([id, kind, pos]) => {
-    const sec = document.getElementById(id); if (!sec) return null;
-    const b = document.createElement('button');
-    b.type = 'button'; b.className = 'sahur ' + pos; b.setAttribute('aria-label', COSTUMES[kind].name + ' peeking. Click to chant.');
-    b.innerHTML = tungSVG(kind) + '<span class="bub"></span>';
-    b.addEventListener('click', e => { e.stopPropagation(); unlock(); b.classList.add('pop'); chant(b, 3); setTimeout(() => b.classList.remove('pop'), 3000); });
-    sec.appendChild(b); return b;
-  }).filter(Boolean);
-  (function peek() {
-    setTimeout(() => {
-      if (!document.hidden && !document.body.classList.contains('no-sahur')) {
-        const vis = peekers.filter(b => { const r = b.getBoundingClientRect(); return r.width && r.top < innerHeight && r.bottom > 0; });
-        const b = rand(vis.length ? vis : [null]);
-        if (b && !b._busy) { b.classList.add('pop'); chant(b, 3); setTimeout(() => b.classList.remove('pop'), 3000); }
-      }
-      peek();
-    }, 10000 + Math.random() * 10000);
-  })();
-  try { if (localStorage.getItem('noSahur') === '1') document.body.classList.add('no-sahur'); } catch (_) {}
-
-  /* ---------- presentation mode ---------- */
-  const slides = $$('section.slide');
-  const hud = $('.hud'), dots = $('.dots', hud), keys = $('.keys'), clock = $('.clock', hud);
-  dots.innerHTML = slides.map(() => '<i></i>').join('');
-  let cur = 0, t0 = 0, tick, idle, lock = 0;
-  const nearest = () => { const y = innerHeight * .4; let best = 0; slides.forEach((s, i) => { if (s.getBoundingClientRect().top <= y) best = i; }); return best; };
-  const moreBelow = () => slides[cur].getBoundingClientRect().bottom > innerHeight + 8;
-  function paint() {
-    const s = slides[cur];
-    document.body.classList.toggle('has-more', moreBelow());
-    $('.hud-title').textContent = `${cur + 1}/${slides.length} · ${s.dataset.title}`;
-    $('.hud-speaker').textContent = s.dataset.speaker;
-    $$('i', dots).forEach((d, i) => d.classList.toggle('on', i === cur));
-  }
-  function go(i) {
-    cur = Math.max(0, Math.min(slides.length - 1, i));
-    const s = slides[cur]; lock = Date.now();
-    scrollTo({ top: s.getBoundingClientRect().top + scrollY, behavior: 'instant' });
-    if (!reduce) { s.classList.remove('enter'); void s.offsetWidth; s.classList.add('enter'); }
-    paint();
-  }
-  function fit() {
-    if (!document.body.classList.contains('present')) return;
-    const avail = innerHeight - 32 - 84;
-    slides.forEach(s => { const w = s.querySelector(':scope > .wrap'); w.style.zoom = 1; const h = w.scrollHeight; w.style.zoom = h > avail ? Math.max(.74, avail / h).toFixed(3) : 1; });
-  }
-  function next() {
-    if (moreBelow()) { lock = Date.now(); scrollBy({ top: Math.min(innerHeight - 140, slides[cur].getBoundingClientRect().bottom - innerHeight + 16), behavior: 'instant' }); paint(); }
-    else go(cur + 1);
-  }
-  function prev() {
-    if (slides[cur].getBoundingClientRect().top < -8) { lock = Date.now(); scrollBy({ top: Math.max(-(innerHeight - 140), slides[cur].getBoundingClientRect().top), behavior: 'instant' }); paint(); }
-    else go(cur - 1);
-  }
-  function enter() {
-    document.body.classList.add('present');
-    document.documentElement.style.scrollBehavior = 'auto';
-    cur = nearest(); t0 = Date.now();
-    clearInterval(tick);
-    tick = setInterval(() => {
-      const s = Math.floor((Date.now() - t0) / 1000);
-      clock.textContent = `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
-      clock.classList.toggle('over', s > 600);
-    }, 500);
-    $$('.rv').forEach(el => { el.classList.add('in'); $$('.fill', el).forEach(f => f.style.width = f.dataset.w + '%'); });
-    fit(); setTimeout(() => { fit(); go(cur); }, 60);
-    document.fonts && document.fonts.ready.then(fit);
-    history.replaceState(null, '', '#present');
-  }
-  function exit() {
-    document.body.classList.remove('present'); clearInterval(tick);
-    document.documentElement.style.scrollBehavior = '';
-    slides.forEach(s => s.querySelector(':scope > .wrap').style.zoom = '');
-    if (document.fullscreenElement) document.exitFullscreen();
-    history.replaceState(null, '', location.pathname);
-  }
-  addEventListener('resize', () => { fit(); if (document.body.classList.contains('present')) go(cur); });
-  $$('[data-present]').forEach(b => b.addEventListener('click', enter));
-  $('[data-exit]').addEventListener('click', exit);
-  $('[data-prev]').addEventListener('click', prev);
-  $('[data-next]').addEventListener('click', next);
-  addEventListener('scroll', () => { if (document.body.classList.contains('present') && Date.now() - lock > 300) { cur = nearest(); paint(); } }, { passive: true });
-  addEventListener('mousemove', () => { document.body.classList.remove('idle'); clearTimeout(idle); idle = setTimeout(() => document.body.classList.add('idle'), 2500); });
-  addEventListener('keydown', e => {
-    if (/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)) return;
-    const on = document.body.classList.contains('present');
-    const k = e.key.toLowerCase();
-    if (k === 'p') { on ? exit() : enter(); return; }
-    if (e.key === '?') { keys.classList.toggle('show'); return; }
-    if (k === 's') { const off = document.body.classList.toggle('no-sahur'); if (off && 'speechSynthesis' in window) speechSynthesis.cancel(); try { localStorage.setItem('noSahur', off ? '1' : '0'); } catch (_) {} return; }
-    if (!on) { const pad = $(`.pad[data-key="${k}"]`); if (pad && !e.metaKey && !e.ctrlKey) hitPad(pad); return; }
-    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); next(); }
-    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); prev(); }
-    else if (e.key === 'Escape') { keys.classList.contains('show') ? keys.classList.remove('show') : exit(); }
-    else if (k === 'f') { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
-    else if (k === 't') { t0 = Date.now(); }
-    else if (/^[1-9]$/.test(e.key)) { go(+e.key - 1); }
-  });
-  keys.addEventListener('click', e => { if (e.target === keys) keys.classList.remove('show'); });
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  if (location.hash === '#present') { enter(); addEventListener('load', () => setTimeout(() => go(0), 50)); }
-})();
-</script>
+<script src="main.js"></script>
 </body>
 </html>
