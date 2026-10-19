@@ -46,19 +46,8 @@ document.querySelectorAll('form[data-netlify]').forEach(function (form) {
         return;
       }
     }
-    var onNetlify = location.hostname.indexOf('netlify.app') !== -1;
-    fetch(onNetlify ? '/' : 'https://usfpra.netlify.app/', {
-      method: 'POST',
-      mode: onNetlify ? 'same-origin' : 'no-cors',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(new FormData(form)).toString()
-    }).then(function () {
-      form.reset();
-      msg.textContent = 'Thanks for submitting!';
-    }).catch(function () {
-      msg.textContent = 'Something went wrong. Please try again later.';
-      msg.classList.add('error');
-    });
+    // sign-ups move to a Google Form; until it's linked, don't pretend to submit
+    msg.textContent = 'Online sign-up is opening soon. Please check back in a day or two!';
   });
 });
 
