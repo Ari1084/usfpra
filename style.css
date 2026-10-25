@@ -395,36 +395,19 @@ ol.sources li:target { background: #fff7e0; }
 .mascot { display: flex; gap: 50px; align-items: center; }
 .mascot-art { flex: 0 0 300px; background: var(--cream); padding: 30px 40px 20px; }
 .mascot-art svg { width: 100%; height: auto; }
+.muted-note { color: var(--text-light); font-size: 14px; }
 .name-options { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 18px; }
 .name-options span { border: 1px solid var(--line); padding: 5px 12px; font-size: 14px; background: var(--white); }
 .name-options span.picked { border-color: var(--navy); background: var(--navy); color: var(--white); }
 .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.product .img { background: #f7f2e6; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; padding: 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
-.product .img > svg { width: 82%; height: auto; }
+.product .img { background: #f4f1ea; aspect-ratio: 1 / 1; display: flex; align-items: center; justify-content: center; padding: 24px; margin-bottom: 16px; position: relative; overflow: hidden; }
+.product .img > svg { width: 86%; height: auto; }
+.product { text-align: center; }
 .product h3 { font-size: 19px; margin-bottom: 4px; }
 .product .price { font-size: 17px; color: var(--navy); font-weight: 600; margin-bottom: 6px; }
 .product p { font-size: 15px; color: var(--text-light); margin-bottom: 12px; }
 .product .soon { display: inline-block; font-size: 13px; padding: 6px 14px; border: 1px solid var(--navy); color: var(--navy); }
 .product .badge { position: absolute; top: 14px; left: 14px; background: #d4a838; color: #1c2b45; font-size: 12px; font-weight: 700; padding: 4px 10px; letter-spacing: .5px; }
-.mock-stickers { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 92%; }
-.stk { aspect-ratio: 1 / 1; border-radius: 50%; background: var(--white); box-shadow: 0 2px 6px rgba(0,0,0,.15); display: flex; align-items: center; justify-content: center; border: 5px solid var(--white); outline: 1px solid #e6dcc4; }
-.stk-owl { background: var(--cream); padding: 10px; }
-.stk-owl svg { width: 85%; height: auto; }
-.stk-text { background: #1c2b45; color: #d4a838; font-weight: 800; font-size: 13px; line-height: 1.1; text-align: center; font-family: var(--display); }
-.stk-text.alt { background: #d4a838; color: #1c2b45; border-radius: 14px; }
-.stk-qr { flex-direction: column; border-radius: 14px; padding: 10px; }
-.stk-qr img { width: 70%; }
-.stk-qr small { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #1c2b45; margin-top: 2px; }
-.mock-buttons { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; width: 100%; }
-.pin { width: 30%; aspect-ratio: 1 / 1; border-radius: 50%; background: var(--cream); border: 5px solid #d4a838; box-shadow: 0 3px 6px rgba(0,0,0,.18); display: flex; align-items: center; justify-content: center; overflow: hidden; }
-.pin svg { width: 92%; height: auto; }
-.mock-pair { display: flex; gap: 10px; width: 100%; }
-.mock-pair > div { flex: 1; text-align: center; }
-.mock-pair svg { width: 100%; height: auto; }
-.mock-pair small { font-size: 12px; color: var(--text-light); }
-.mock-plush { width: 78%; position: relative; }
-.mock-plush svg { width: 100%; height: auto; }
-.mock-plush .ribbon { position: absolute; bottom: 8%; right: -6%; background: #1c2b45; color: #d4a838; font-size: 12px; font-weight: 700; padding: 4px 12px; transform: rotate(-8deg); }
 .notice { background: var(--cream); border-left: 4px solid #d4a838; padding: 16px 20px; font-size: 15px; }
 
 /* ---------- events / partners ---------- */
@@ -457,9 +440,3 @@ table.events td:first-child { white-space: nowrap; font-weight: 600; color: var(
   table.events td:first-child { white-space: normal; }
 }
 
-.mock-tee { position: relative; width: 100%; height: 100%; }
-.mock-tee .back { width: 78%; margin: 0 auto; text-align: center; }
-.mock-tee .back svg { width: 100%; height: auto; }
-.mock-tee .front { position: absolute; right: -10px; bottom: -16px; width: 28%; background: #fff; border: 1px solid #e6dcc4; padding: 6px 6px 2px; text-align: center; box-shadow: 0 2px 6px rgba(0,0,0,.1); }
-.mock-tee .front svg { width: 100%; height: auto; }
-.mock-tee small { font-size: 11px; color: var(--text-light); }
